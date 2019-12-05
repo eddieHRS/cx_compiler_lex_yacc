@@ -1,0 +1,22 @@
+/*
+测试 ++ ** %
+*/
+const int i = 1;
+int k,j,m1,m2;
+
+//i = 2;
+procedure test;
+{
+	m1 = i++;
+	write(i,m1);
+	m2 = ++i;
+	write(i,m2);
+	k = 5;
+ 	j = k % i;
+ 	write(j);
+ 	j = k ** i;
+ 	write(j);
+};
+{
+ call test;
+}

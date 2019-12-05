@@ -1,0 +1,7 @@
+//测试exit
+int i;
+{
+	i = 2;
+	exit;
+	write(i);
+}

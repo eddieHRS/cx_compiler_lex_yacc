@@ -1,0 +1,12 @@
+//测试 += -= *= /=
+int i;
+{
+	i = 2;
+	write(i);
+	i += 1;
+	write(i);
+	i *= 3;
+	write(i);
+	i /= 3;
+	write(i);
+}

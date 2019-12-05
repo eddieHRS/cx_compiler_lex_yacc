@@ -1,0 +1,9 @@
+// do while 测试
+int i;
+{
+	i = 2;
+	do{
+		write(i);
+	}
+	while(i < 1);
+}

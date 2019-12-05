@@ -1,0 +1,18 @@
+/*测试 xor异或  xnor同或*/
+bool f,t;
+{
+	t = true;
+	f = false;
+	if(t xor f){ //不同为1
+		write(1);
+	}
+	else{
+		write(2);
+	};
+
+	if(t xnor f){
+		write(3);
+	}else{
+		write(4);
+	};
+}

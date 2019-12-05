@@ -1,0 +1,10 @@
+//判断奇数偶数的 odd测试
+int i;
+{
+	i = 3;
+	if(odd i){
+		write(1);
+	}else{
+		write(2);
+	}
+}

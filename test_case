@@ -1,0 +1,23 @@
+//case 语句测试
+const int i = 2,j = 4,k = 6;
+{
+	switch (k){
+		case 2:{
+			write(2);
+			break;
+		};
+		case 3:{
+			write(3);
+			break;
+		};
+		case 4:
+			write(4);
+		case 5:
+			write(5);
+		default:
+			write(-1);
+	}
+}
+//i 测试break跳出
+//j 测试没有break就会顺序执行
+//k 测试default

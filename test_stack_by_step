@@ -1,0 +1,14 @@
+//测试单步查看数据栈的程序
+const int i = 0;
+int  i1,i2;
+bool b1,b2;
+procedure test;
+{
+	i1 = 2;
+	i2 = ++i1;
+	write(i2);
+};
+
+{
+ call test;
+}

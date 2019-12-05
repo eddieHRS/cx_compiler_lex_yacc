@@ -1,0 +1,11 @@
+int i,j;
+{
+	i = 0;
+	if(i == 1){
+		write(2);
+	}
+	else
+	{
+        write(3);
+	};
+}

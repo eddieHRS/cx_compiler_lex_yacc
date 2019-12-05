@@ -1,0 +1,20 @@
+//1-100 素数
+int i,j,flag;
+{
+	write(2);
+	for(i = 3; i < 100; i+=2){
+		flag = 0;
+		for(j = 3; j < i; j+=1){
+			if(i % j == 0) then
+			{
+				flag = 1;
+				j = i;
+			};
+		};
+		if(flag == 0)
+		then
+		{
+			write(i);
+		};
+	}
+}
