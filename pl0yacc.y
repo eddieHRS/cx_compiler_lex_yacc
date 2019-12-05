@@ -98,7 +98,7 @@ int number;
 
 %token BEGINSYM, CALLSYM, CONSTSYM, DOSYM, ENDSYM, IFSYM, ELSESYM, ODDSYM, PROCSYM, BREAKSYM
 %token READSYM, THENSYM, INTSYM, WHILESYM, WRITESYM, FORSYM, CONTINUESYM
-%token BECOMES, LSS, LEQ, GTR, GEQ, PLUS, MINUS, TIMES, SLASH, NOT,POW,DPLUS,DMINUS,LPAREN, RPAREN
+%token BECOMES, LSS, LEQ, GTR, GEQ, PLUS, MINUS, TIMES, SLASH, NOT,POW,DPLUS,DMINUS,LPAREN, RPAREN, REPEATSYM, UNTILSYM
 %token MOD, TRUESYM, FALSESYM, BOOLSYM, XORSYM, XNORSYM
 %token EQL, COMMA, NEQ, SEMICOLON, COLON
 %token ORSYM, ANDSYM, LSHIFT, RSHIFT, EXITSYM
@@ -252,8 +252,32 @@ statement: assignmentstm
           | breakstm
           | continuestm
           | switchstm
+          | dowhilestm
+          | repeatstm
           |
           ;
+
+/* do while 语句*/
+dowhilestm: DOSYM get_code_addr 
+            statement
+            WHILESYM LPAREN condition
+             {
+              gen(jpc, 0, cx+2);
+              gen(jmp, 0, $2);
+             }
+            RPAREN SEMICOLON 
+            ;
+
+/*repeat until 语句*/
+repeatstm: REPEATSYM get_code_addr 
+            statement
+            UNTILSYM LPAREN condition
+             {
+              gen(jpc, 0, $2);
+             }
+            RPAREN SEMICOLON 
+            ;
+
 /* switch 语句*/
 switchstm: SWITCHSYM LPAREN ident RPAREN 
            BEGINSYM
@@ -1166,9 +1190,12 @@ void interpret()
 				break;
 		}
     if(stackswitch){
+        int lt = p - 1;
         printf("===================\n");
-        printf("当前指令条数为第 %d 条\n",p-1);
-        printf("%d %s %d %d\n", p-1, name[code[p-1].f], code[p-1].l, code[p-1].a);
+        if(i.f == jmp || i.f == jpc || i.f == cal)
+          lt = p;
+        printf("当前指令条数为第 %d 条\n",lt);
+        printf("%d %s %d %d\n", lt, name[code[lt].f], code[lt].l, code[lt].a);
         printf("执行后的数据栈为：\n");
         int temp_m = t;
         while(temp_m >= 0){

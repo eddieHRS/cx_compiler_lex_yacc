@@ -48,6 +48,8 @@ int yywrap(void);
 "case"                   {return CASESYM;}
 "switch"                 {return SWITCHSYM;}
 "default"                {return DEFAULTSYM;}
+"repeat"                 {return REPEATSYM;}
+"until"                  {return UNTILSYM;}
 [A-Za-z]([A-Za-z]|[0-9])* {yylval.ident=(char *)malloc(strlen(yytext)+1);
                             strcpy(yylval.ident,yytext);
                             return IDENT;
